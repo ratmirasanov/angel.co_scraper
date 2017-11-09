@@ -7,6 +7,7 @@ import requests
 
 from selenium.common import exceptions
 from selenium.webdriver import ActionChains
+from selenium.webdriver.common.keys import Keys
 
 from utilities import Utilities
 import config
@@ -45,6 +46,7 @@ class Angel(Utilities):
         self.driver.get(config.DOMAIN + "/companies")
 
         # Finding elements on the page and actions.
+        # Does not work.
         search_box_field_element = self.find_by_css(".search-box")
         search_box_field_element.click()
 
@@ -53,13 +55,13 @@ class Angel(Utilities):
         search_text_field_element = self.find_by_css(".search-box .data_entry>input")
         search_text_field_element.clear()
         search_text_field_element.send_keys(company_type)
-        time.sleep(config.DELAY2)
+        search_text_field_element.send_keys(Keys.ENTER)
 
         search_text_field_element.send_keys(city)
-        time.sleep(config.DELAY2)
+        search_text_field_element.send_keys(Keys.ENTER)
 
         search_text_field_element.send_keys(technology)
-        time.sleep(config.DELAY2)
+        search_text_field_element.send_keys(Keys.ENTER)
 
     def open_company(self, link):
         """A method for opening page via link on the Angel.co."""
@@ -196,7 +198,7 @@ class Angel(Utilities):
         self.login(config.EMAIL, config.PASSWORD)
 
         self.search_for_by_category("Mobile App", "New York City", "Python")
-        time.sleep(config.DELAY1)
+        time.sleep(config.DELAY2)
 
         if self.index != 0:
             for i in range(int(self.index / self.elements_on_page)):
