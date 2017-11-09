@@ -45,10 +45,11 @@ class Angel(Utilities):
         # Go to URL.
         self.driver.get(config.DOMAIN + "/companies")
 
+        self.wait_visibility_by_css_many(".base.startup")
+
         # Finding elements on the page and actions.
-        # Does not work.
-        search_box_field_element = self.find_by_css(".search-box")
-        search_box_field_element.click()
+        search_div_field_element = self.find_by_css(".search-box")
+        search_div_field_element.click()
 
         self.wait_visibility_by_css(".search-box .data_entry>input")
 
