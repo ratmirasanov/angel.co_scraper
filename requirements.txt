@@ -1,0 +1,4 @@
+selenium==3.7.0
+requests
+slackclient
+aiohttp==2.3.0
