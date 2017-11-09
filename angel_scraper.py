@@ -194,12 +194,6 @@ class Angel(Utilities):
         self.search_for_by_category("Mobile App", "New York City", "Python")
         time.sleep(config.DELAY1)
 
-        # Go to URL.
-        #self.driver.get(config.DOMAIN +
-        #                "/companies?company_types[]=Mobile+App&"
-        #                "company_types[]=Startup&company_types[]=Private+Company&"
-        #                "company_types[]=Early+Stage")
-
         if self.index != 0:
             for i in range(int(self.index / self.elements_on_page)):
                 more_link = self.find_by_css(".more")
