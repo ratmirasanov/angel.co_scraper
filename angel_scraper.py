@@ -23,7 +23,7 @@ class Angel(Utilities):
         """A method for logging in to the Angel.co."""
 
         # Go to URL.
-        self.driver.get("https://angel.co/login")
+        self.driver.get(config.DOMAIN + "/login")
 
         # Finding elements on the page and actions.
         email_text_field_element = self.find_by_id("user_email")
@@ -36,6 +36,26 @@ class Angel(Utilities):
 
         login_button_element = self.find_by_name("commit")
         self.click(login_button_element)
+        time.sleep(config.DELAY2)
+
+    def search_for_by_category(self, category="", city=""):
+        """A method for searching companies by categories on the Angel.co."""
+
+        # Go to URL.
+        self.driver.get(config.DOMAIN + "/companies")
+
+        # Finding elements on the page and actions.
+        # To Do.
+        find_text_field_element = self.find_by_id("find_desc")
+        find_text_field_element.clear()
+        find_text_field_element.send_keys(category)
+
+        near_text_field_element = self.find_by_id("dropperText_Mast")
+        near_text_field_element.clear()
+        near_text_field_element.send_keys(city)
+
+        search_button_element = self.find_by_id("header-search-submit")
+        self.click(search_button_element)
         time.sleep(config.DELAY2)
 
     def open_company(self, link):
@@ -166,9 +186,6 @@ class Angel(Utilities):
             traceback.print_exception(exc_type, exc_value,
                                       exc_traceback, limit=2, file=sys.stdout)
 
-        # Let's open Angel.co.
-        config.DOMAIN = "https://angel.co"
-
         self.stop_file = open("csv/angel.ti", "w+")
 
         self._set_up()
@@ -176,7 +193,8 @@ class Angel(Utilities):
         self.login(config.EMAIL, config.PASSWORD)
 
         # Go to URL.
-        self.driver.get("https://angel.co/companies?company_types[]=Mobile+App&"
+        self.driver.get(config.DOMAIN +
+                        "/companies?company_types[]=Mobile+App&"
                         "company_types[]=Startup&company_types[]=Private+Company&"
                         "company_types[]=Early+Stage")
 

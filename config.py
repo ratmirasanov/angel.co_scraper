@@ -2,7 +2,7 @@
 
 import os
 
-DOMAIN = os.environ.get('DOMAIN', 'https://www.yelp.com')
+DOMAIN = os.environ.get('DOMAIN', 'https://angel.co')
 EMAIL = os.environ.get('EMAIL', 'gfautotesting1@gmail.com')
 PASSWORD = os.environ.get('PASSWORD', 'qwerty12345')
 DELAY1 = 30
