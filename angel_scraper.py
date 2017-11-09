@@ -45,7 +45,11 @@ class Angel(Utilities):
         self.driver.get(config.DOMAIN + "/companies")
 
         # Finding elements on the page and actions.
-        # To Do.
+        search_box_field_element = self.find_by_css(".search-box")
+        search_box_field_element.click()
+
+        self.wait_visibility_by_css(".search-box .data_entry>input")
+
         search_text_field_element = self.find_by_css(".search-box .data_entry>input")
         search_text_field_element.clear()
         search_text_field_element.send_keys(company_type)
