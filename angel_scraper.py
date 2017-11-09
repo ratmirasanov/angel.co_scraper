@@ -19,7 +19,7 @@ class Angel(Utilities):
     elements_on_page = 20
     begin_time = 0
 
-    def login(self, email='', password=''):
+    def login(self, email="", password=""):
         """A method for logging in to the Angel.co."""
 
         # Go to URL.
@@ -90,7 +90,7 @@ class Angel(Utilities):
                 ".column.company_size .value").get_attribute("innerText")
 
             # If li element have 1-10 employees word.
-            if text == "1-10" or text == "":
+            if text == "" or text == "1-10" or text == "11-50":
                 company_name = company_div.find_elements_by_css_selector(
                     ".startup-link")[1]
                 res = requests.put(
