@@ -38,7 +38,7 @@ class Angel(Utilities):
         self.click(login_button_element)
         time.sleep(config.DELAY2)
 
-    def search_for_by_category(self, category="", city=""):
+    def search_for_by_category(self, company_type="", city="", technology=""):
         """A method for searching companies by categories on the Angel.co."""
 
         # Go to URL.
@@ -46,16 +46,15 @@ class Angel(Utilities):
 
         # Finding elements on the page and actions.
         # To Do.
-        find_text_field_element = self.find_by_id("find_desc")
-        find_text_field_element.clear()
-        find_text_field_element.send_keys(category)
+        search_text_field_element = self.find_by_css(".search-box .data_entry>input")
+        search_text_field_element.clear()
+        search_text_field_element.send_keys(company_type)
+        time.sleep(config.DELAY2)
 
-        near_text_field_element = self.find_by_id("dropperText_Mast")
-        near_text_field_element.clear()
-        near_text_field_element.send_keys(city)
+        search_text_field_element.send_keys(city)
+        time.sleep(config.DELAY2)
 
-        search_button_element = self.find_by_id("header-search-submit")
-        self.click(search_button_element)
+        search_text_field_element.send_keys(technology)
         time.sleep(config.DELAY2)
 
     def open_company(self, link):
@@ -192,11 +191,14 @@ class Angel(Utilities):
 
         self.login(config.EMAIL, config.PASSWORD)
 
+        self.search_for_by_category("Mobile App", "New York City", "Python")
+        time.sleep(config.DELAY1)
+
         # Go to URL.
-        self.driver.get(config.DOMAIN +
-                        "/companies?company_types[]=Mobile+App&"
-                        "company_types[]=Startup&company_types[]=Private+Company&"
-                        "company_types[]=Early+Stage")
+        #self.driver.get(config.DOMAIN +
+        #                "/companies?company_types[]=Mobile+App&"
+        #                "company_types[]=Startup&company_types[]=Private+Company&"
+        #                "company_types[]=Early+Stage")
 
         if self.index != 0:
             for i in range(int(self.index / self.elements_on_page)):
