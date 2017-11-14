@@ -1,4 +1,5 @@
 selenium==3.7.0
-requests
-slackclient
+requests==2.18.4
+slackclient==1.0.9
 aiohttp==2.3.0
+pylint==1.7.4
