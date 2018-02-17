@@ -1,5 +1,5 @@
-selenium==3.7.0
+selenium==3.9.0
 requests==2.18.4
-slackclient==1.0.9
-aiohttp==2.3.0
-pylint==1.7.4
+slackclient==1.1.2
+aiohttp==3.0.1
+pylint==1.8.2
