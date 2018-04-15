@@ -3,6 +3,7 @@
 import os
 
 DOMAIN = os.environ.get('DOMAIN', 'https://angel.co')
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 EMAIL = os.environ.get('EMAIL', 'gfautotesting1@gmail.com')
 PASSWORD = os.environ.get('PASSWORD', 'qwerty12345')
 DELAY1 = 30
